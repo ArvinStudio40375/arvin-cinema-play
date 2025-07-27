@@ -14,7 +14,155 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      ip_registrations: {
+        Row: {
+          first_registered_at: string
+          id: string
+          ip_address: unknown
+        }
+        Insert: {
+          first_registered_at?: string
+          id?: string
+          ip_address: unknown
+        }
+        Update: {
+          first_registered_at?: string
+          id?: string
+          ip_address?: unknown
+        }
+        Relationships: []
+      }
+      movies: {
+        Row: {
+          created_at: string
+          description: string | null
+          drive_url: string
+          id: string
+          thumbnail_url: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          drive_url: string
+          id?: string
+          thumbnail_url?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          drive_url?: string
+          id?: string
+          thumbnail_url?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          balance: number
+          created_at: string
+          full_name: string
+          id: string
+          ip_address: unknown | null
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          balance?: number
+          created_at?: string
+          full_name: string
+          id?: string
+          ip_address?: unknown | null
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          balance?: number
+          created_at?: string
+          full_name?: string
+          id?: string
+          ip_address?: unknown | null
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      topup_requests: {
+        Row: {
+          admin_note: string | null
+          amount: number
+          created_at: string
+          id: string
+          status: string
+          transfer_method: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          admin_note?: string | null
+          amount: number
+          created_at?: string
+          id?: string
+          status?: string
+          transfer_method: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          admin_note?: string | null
+          amount?: number
+          created_at?: string
+          id?: string
+          status?: string
+          transfer_method?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      watch_history: {
+        Row: {
+          cost_deducted: number
+          id: string
+          movie_id: string
+          user_id: string
+          watch_duration: number
+          watched_at: string
+        }
+        Insert: {
+          cost_deducted?: number
+          id?: string
+          movie_id: string
+          user_id: string
+          watch_duration?: number
+          watched_at?: string
+        }
+        Update: {
+          cost_deducted?: number
+          id?: string
+          movie_id?: string
+          user_id?: string
+          watch_duration?: number
+          watched_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "watch_history_movie_id_fkey"
+            columns: ["movie_id"]
+            isOneToOne: false
+            referencedRelation: "movies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
